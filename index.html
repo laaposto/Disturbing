@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Disturbing Content</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Analyze distrubing images">
+    <meta name="robots" content="index, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="laaposto">
+    <link href='http://fonts.googleapis.com/css?family=Bitter:400,300,700|Ubuntu:400,300,700&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="imgs/favicon.ico"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nouislider.css">
+    <!--END CSS -->
+
+</head>
+<body>
+<div id="myModal" class="reveal-modal">
+    <h1></h1>
+    <p></p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="wrapper_input">
+    <h1 class="title">Disturbing image content detector</h1>
+
+    <p class="desc">This is an experimental system attempting to detect disturbingly violent content in images. To
+        submit an image from the Web, type or paste the image URL into the box, then click "Classify". The image will
+        then be displayed, along with the classifier output</p>
+
+    <p class="desc">Contact: <span class="bold_red">markzampoglou@iti.gr</span></p>
+
+    <div>
+        <ul class="input_box">
+            <li>
+                <input id="img_url" type="text" placeholder="Copy a URL or Drag & drop an image from the web"
+                       ondrop="drop_img(event);"
+                       ondragover="return false">
+            </li>
+        </ul>
+    </div>
+    <p class="back">Back to examples</p>
+    <button type="button" onclick="verify_text();return false;" class="button">
+        Classify
+    </button>
+    <p class="desc_examples">or have a look at some explanatory examples below</p>
+
+    <p class="warning box"><span class="bold_red">WARNING:</span> The sample images provided may
+        be
+        visually disturbing to some viewers. We have
+        ensured that all sample images in the "Disturbing" category are movie screenshots and that all
+        violence depicted is the result of special effects. Even so, we advise users to exercise discretion
+        in revealing the images.</p>
+
+    <p class="warning" id="reveal_images" data-active="hidden">Reveal all <img
+            src="imgs/eye.png"></p>
+
+    <div id="main">
+        <div id="loading_examples">Loading examples, please wait.....
+            <img id="loadimg_examples" src="imgs/loading.gif" alt="loading.."/>
+        </div>
+        <ul id="tiles">
+            <li>
+                <img data-foggy="false" src="imgs/150123875.jpg">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/the-collection-review.jpg">
+                <p><span class="bold_red">Movie:</span> The Collection (2012)</p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/creepshow-2a.jpg">
+                <p><span class="bold_red">Movie:</span> Creepshow 2 - The Raft (1987) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/sky-field-agriculture-harvest.jpg">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/barcode.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/tesla-model-s-accident-germany-3.jpg">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/una-scena-del-film-grind-house-39413.jpg">
+
+                <p><span class="bold_red">Movie:</span> Grindhouse (2007) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/SU1.jpeg">
+                <p><span style="color: #AF0E09;font-weight: bold">Movie:</span> Splatter University (1984) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/image-w384.jpg">
+                <p><span class="bold_red">Movie:</span> Blood feast (1963) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/Kevin.jpg">
+                <p><span class="bold_red">Movie:</span> The Code (2011) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/Spaghetti_v2.png">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/brain-dead-dead-alive_-550x250.jpg">
+                <p><span class="bold_red">Movie:</span> Braindead AKA Dead Alive (1992) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/ArkosicSSXPL.JPG">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/enhanced-buzz-7975-1376342236-3.jpg">
+                <p><span class="bold_red">Movie:</span> The Wizard of Gore (1970) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/new-york-bomb.jpg">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/libya-nato-bombing.jpg">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/Slide-4.jpg">
+                <p><span class="bold_red">Movie:</span> Hotel Inferno: The Cathedral Of Pain (2016) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/Cat_eating_a_rabbit.jpeg.jpeg">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/gh15a.jpg">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/maxresdefault.jpg">
+                <p><span class="bold_red">Movie:</span> Stand by me (1986)</p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+            <li>
+                <img data-foggy="false" src="imgs/four-die-in-chakwal-road-accident-1428450073-8336.jpg">
+            </li>
+            <li>
+                <img class="foggy" data-foggy="true" src="imgs/still_07.png">
+                <p><span style="color: #AF0E09;font-weight: bold">Movie:</span> The Taint (2010) </p>
+                <img class="reveal_image" src="imgs/eye.png">
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="wrapper_result">
+    <div class="multiple-borders">
+        <img id="result_image" src="imgs/noimage.png" onerror="imgError1(this);"/>
+    </div>
+    <div id="number_result">
+        <p id="percentage">0%</p>
+        <p id="text_result">-</p>
+    </div>
+</div>
+<div id="slider_result"></div>
+<span id="slider_input">50</span>
+
+<div id="feedback">
+    <p id="class_p">Was our classification wrong? Drag the slider above to the value that you consider as most
+        appropriate for this image.</p>
+    <button type="button" onclick="feedback();return false;" class="button" id="submit">
+        Submit
+    </button>
+</div>
+<p id="thank_p">Thank You for your feedback!</p>
+
+<div id="loading">Loading results, please wait.....
+    <img id="loadimg" src="imgs/loading.gif" alt="loading.."/>
+</div>
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/jquery.imagesloaded.js"></script>
+<script src="js/jquery.wookmark.js"></script>
+<script src="js/wNumb.js"></script>
+<script src="js/jquery.reveal.js"></script>
+<script src="js/animateNumber.js"></script>
+<script src="js/nouislider.js"></script>
+<script src="js/ajax_abort.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
